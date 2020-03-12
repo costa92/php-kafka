@@ -2,6 +2,7 @@
     "name": "costalong/php-kafka",
     "description": "lumen/laravel kafka extends desc",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "costalong",
