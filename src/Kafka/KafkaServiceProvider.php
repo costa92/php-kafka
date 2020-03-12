@@ -15,21 +15,25 @@ class KafkaServiceProvider extends ServiceProvider
 {
 
 	/**
+	 * author: costalong
+	 * email: longqiuhong@163.com
+	 */
+	public function boot()
+	{
+		parent::boot();
+		$this->publishes([realpath(__DIR__.'/../../config/kafka.php') => config_path('kafka.php')]);
+	}
+
+	/**
 	 * Register any application services.
 	 *
 	 * @return void
 	 */
 	public function register()
 	{
-		//
-	}
-
-	/**
-	 * author: costalong
-	 * email: longqiuhong@163.com
-	 */
-	public function boot()
-	{
 
 	}
+
+
+
 }
