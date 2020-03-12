@@ -1,0 +1,12 @@
+{
+    "name": "costalong/php-kafka",
+    "description": "lumen/laravel kafka extends desc",
+    "type": "library",
+    "authors": [
+        {
+            "name": "costalong",
+            "email": "longqiuhong@163.com"
+        }
+    ],
+    "require": {}
+}
