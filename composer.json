@@ -9,5 +9,10 @@
             "email": "longqiuhong@163.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Costalong\\Kafka\\": "src/"
+        }
+    }
 }
