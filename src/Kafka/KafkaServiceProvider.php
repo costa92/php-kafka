@@ -20,7 +20,6 @@ class KafkaServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		parent::boot();
 		$this->publishes([realpath(__DIR__.'/../../config/kafka.php') => config_path('kafka.php')]);
 	}
 

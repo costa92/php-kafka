@@ -31,6 +31,10 @@ class KafkaServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
+		$this->mergeConfigFrom(
+			__DIR__ . '/../../config/kafka.php', 'kafka'
+		);
+
 		$this->app->bind('kafka', function () {
 			return new Producer();
 		});
