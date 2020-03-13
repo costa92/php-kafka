@@ -9,6 +9,7 @@
 namespace Costalong\Kafka;
 
 use Costalong\Kafka\Factory\Producer;
+use Costalong\Kafka\Kafka\KafkaService;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -22,23 +23,32 @@ class KafkaServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->publishes([realpath(__DIR__ . '/../../config/kafka.php') => config_path('kafka.php')]);
+		$this->mergeConfigFrom(
+			__DIR__ . '/../../config/kafka.php', 'kafka'
+		);
 	}
 
 	/**
+	 * 注册数据
 	 * Register any application services.
 	 *
 	 * @return void
 	 */
 	public function register()
 	{
-		$this->mergeConfigFrom(
-			__DIR__ . '/../../config/kafka.php', 'kafka'
-		);
-
-		$this->app->bind('kafka', function () {
-			return new Producer();
+		$this->app->singleton('kafka', function ($app) {
+			$config = $app->make('config');
+			$brokers = $config->get('kafka.brokers');
+			return new KafkaService($brokers);
 		});
 	}
 
-
+	/**
+	 * author: costalong
+	 * email: longqiuhong@163.com
+	 */
+	public function provides()
+	{
+		return ['kafka'];
+	}
 }
